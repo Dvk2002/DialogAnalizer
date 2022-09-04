@@ -14,7 +14,6 @@ model = AutoModel.from_pretrained("cointegrated/rubert-tiny2")
 def get_similarity(x1, x2):
   return torch.nn.functional.cosine_similarity(x1,x2, axis=0)
 
-
 # Функция для получения базовых эмбэддингов для вычисления косинусного сходства
 def get_base_emb(list_name, model):
     for name in list_name:
@@ -23,7 +22,6 @@ def get_base_emb(list_name, model):
             model_output = model(**encoded_input)
             embeddings = model_output.pooler_output
     return embeddings
-
 
 # Проверка на принадлежность к определенной части речи
 def check_tags(items, check_list):
@@ -34,7 +32,6 @@ def check_tags(items, check_list):
         if any([check_param in morph.parse(item)[0].tag for check_param in check_list]):
             return item
 
-
 # Вычисление косинусного сходства с базовыми эмбэддингами и проверка максимального значения
 def check_max_score(items, model, tokenizer, base_embeddings, alpha=0.99):
     max_score = 0
@@ -42,7 +39,6 @@ def check_max_score(items, model, tokenizer, base_embeddings, alpha=0.99):
     encoded_input = tokenizer(items, padding=True, truncation=True, max_length=64, return_tensors='pt')
 
     with torch.no_grad():
-
         model_output = model(**encoded_input)
         embeddings = model_output.pooler_output
 
@@ -57,7 +53,6 @@ def check_max_score(items, model, tokenizer, base_embeddings, alpha=0.99):
 
                 if max_score > alpha:
                     return True
-
 
 # Класс анализатора диалогов
 class DialogAnalizer():
@@ -210,7 +205,6 @@ class DialogAnalizer():
                 list_dialog[i] = False
 
         return list_dialog
-
 
 
 if __name__ == "__main__":
