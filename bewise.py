@@ -149,7 +149,7 @@ class DialogAnalizer():
                     if flag == 1:
                         check_list = ['Name']
                         name = check_tags([item], check_list)
-
+                        
                         if name:
                             list_dialog[i] = reply
                             list_names[i] = name
@@ -171,7 +171,6 @@ class DialogAnalizer():
             for reply in dialog:
 
                 items = reply.split()
-
                 if flag == 2:
                     break
 
@@ -209,7 +208,6 @@ class DialogAnalizer():
 
             if (i in self.greetings.keys()) & (i in self.byes.keys()):
                 list_dialog[i] = True
-
             else:
                 list_dialog[i] = False
 
