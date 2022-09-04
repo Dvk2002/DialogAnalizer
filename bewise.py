@@ -11,13 +11,11 @@ tokenizer = AutoTokenizer.from_pretrained("cointegrated/rubert-tiny2")
 model = AutoModel.from_pretrained("cointegrated/rubert-tiny2")
 
 # Функция косинусного расстояния
-
 def get_similarity(x1, x2):
   return torch.nn.functional.cosine_similarity(x1,x2, axis=0)
 
 
 # Функция для получения базовых эмбэддингов для вычисления косинусного сходства
-
 def get_base_emb(list_name, model):
     for name in list_name:
         encoded_input = tokenizer(list_name, padding=True, truncation=True, max_length=64, return_tensors='pt')
@@ -28,7 +26,6 @@ def get_base_emb(list_name, model):
 
 
 # Проверка на принадлежность к определенной части речи
-
 def check_tags(items, check_list):
     for item in items:
 
@@ -39,7 +36,6 @@ def check_tags(items, check_list):
 
 
 # Вычисление косинусного сходства с базовыми эмбэддингами и проверка максимального значения
-
 def check_max_score(items, model, tokenizer, base_embeddings, alpha=0.99):
     max_score = 0
 
@@ -64,7 +60,6 @@ def check_max_score(items, model, tokenizer, base_embeddings, alpha=0.99):
 
 
 # Класс анализатора диалогов
-
 class DialogAnalizer():
 
     def __init__(self, data_path):
