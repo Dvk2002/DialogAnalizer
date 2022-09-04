@@ -158,16 +158,13 @@ class DialogAnalizer():
                         flag = 1
 
                     if flag == 1:
-
                         check_list = ['Name']
-
                         name = check_tags([item], check_list)
 
                         if name:
                             list_dialog[i] = reply
                             list_names[i] = name
                             flag = 2
-
                             break
 
         return list_dialog, list_names
@@ -197,6 +194,7 @@ class DialogAnalizer():
                     base_embeddings = get_base_emb(list_name, model)
 
                     if check_max_score([item], model, tokenizer, base_embeddings, alpha=0.99):
+
                         flag = 1
 
                     if flag == 1:
@@ -206,23 +204,17 @@ class DialogAnalizer():
                         name = check_tags([item], check_list)
 
                         if name:
-
                             company_name += f' {name}'
-
                             continue
 
                         elif company_name:
 
                             list_dialog[i] = company_name
-
                             flag = 2
-
                             break
 
                         else:
-
                             flag = 0
-
                             continue
 
         return list_dialog
@@ -236,11 +228,9 @@ class DialogAnalizer():
         for i in self.data_prep.index:
 
             if (i in self.greetings.keys()) & (i in self.byes.keys()):
-
                 list_dialog[i] = True
 
             else:
-
                 list_dialog[i] = False
 
         return list_dialog
