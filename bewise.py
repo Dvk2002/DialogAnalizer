@@ -79,7 +79,6 @@ class DialogAnalizer():
 
     # Функция подготовки данных
     # Данные группируются по диалогам и оставляются только реплики менеджеров
-
     def prep_data(self):
 
         data_group = self.data.groupby(['dlg_id', 'role']).text.apply(lambda x: [i for i in x]).reset_index()
@@ -88,7 +87,6 @@ class DialogAnalizer():
         return data_prep
 
     # Функция определения реплик с приветствиями
-
     def get_greeting(self):
 
         list_dialog = {}
@@ -109,7 +107,6 @@ class DialogAnalizer():
         return list_dialog
 
     # Функция определения реплик с прощаниями
-
     def get_bye(self):
 
         list_dialog = {}
@@ -130,7 +127,6 @@ class DialogAnalizer():
         return list_dialog
 
     # Функция определения реплик, где менеджер представился, и определения имен
-
     def get_name(self):
 
         list_dialog = {}
@@ -168,7 +164,6 @@ class DialogAnalizer():
         return list_dialog, list_names
 
     # Функция определения названия компании
-
     def get_company(self):
 
         list_dialog = {}
@@ -211,7 +206,6 @@ class DialogAnalizer():
         return list_dialog
 
     # Функция вежливости
-
     def get_polite(self):
 
         list_dialog = {}
