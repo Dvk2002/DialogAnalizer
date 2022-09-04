@@ -96,7 +96,6 @@ class DialogAnalizer():
 
                 if check_max_score(items, model, tokenizer, base_embeddings, alpha=0.99):
                     list_dialog[i] = reply
-
                     break
 
         return list_dialog
@@ -116,7 +115,6 @@ class DialogAnalizer():
 
                 if check_max_score(items, model, tokenizer, base_embeddings, alpha=0.99):
                     list_dialog[i] = reply
-
                     break
 
         return list_dialog
@@ -149,7 +147,7 @@ class DialogAnalizer():
                     if flag == 1:
                         check_list = ['Name']
                         name = check_tags([item], check_list)
-                        
+
                         if name:
                             list_dialog[i] = reply
                             list_names[i] = name
