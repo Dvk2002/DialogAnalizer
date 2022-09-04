@@ -35,7 +35,6 @@ def check_tags(items, check_list):
 # Вычисление косинусного сходства с базовыми эмбэддингами и проверка максимального значения
 def check_max_score(items, model, tokenizer, base_embeddings, alpha=0.99):
     max_score = 0
-
     encoded_input = tokenizer(items, padding=True, truncation=True, max_length=64, return_tensors='pt')
 
     with torch.no_grad():
