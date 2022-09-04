@@ -98,7 +98,6 @@ class DialogAnalizer():
             for reply in dialog[:4]:
 
                 items = reply.split()
-
                 list_name = ['здравствуйте', 'добрый', 'день', 'вечер', 'утро']
                 base_embeddings = get_base_emb(list_name, model)
 
@@ -120,7 +119,6 @@ class DialogAnalizer():
             for reply in dialog[-2:]:
 
                 items = reply.split()
-
                 list_name = ['свидания', 'доброго', 'хорошего']
                 base_embeddings = get_base_emb(list_name, model)
 
@@ -178,7 +176,6 @@ class DialogAnalizer():
         for i, dialog in enumerate(self.data_prep.text.values):
 
             flag = 0
-
             company_name = ''
 
             for reply in dialog:
@@ -194,25 +191,19 @@ class DialogAnalizer():
                     base_embeddings = get_base_emb(list_name, model)
 
                     if check_max_score([item], model, tokenizer, base_embeddings, alpha=0.99):
-
                         flag = 1
 
                     if flag == 1:
-
                         check_list = ['NOUN', 'ADJF', 'CONJ', 'ADJS', 'PREP', 'NUMR']
-
                         name = check_tags([item], check_list)
 
                         if name:
                             company_name += f' {name}'
                             continue
-
                         elif company_name:
-
                             list_dialog[i] = company_name
                             flag = 2
                             break
-
                         else:
                             flag = 0
                             continue
